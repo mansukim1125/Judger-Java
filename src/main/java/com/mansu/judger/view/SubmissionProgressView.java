@@ -41,14 +41,14 @@ public class SubmissionProgressView extends JFrame {
 //		testcase 개수를 채점 결과 테이블 row 의 수로 함.
 		int testCaseSize = submissionRequest.getProblem().getTestcases().size();
 
-		String[][] rows = new String[testCaseSize][4];
+		String[][] rows = new String[testCaseSize][5];
 		for (int i = 0; i < rows.length; ++i) {
-			rows[i] = new String[4];
+			rows[i] = new String[5];
 			rows[i][0] = "채점 중";
 		}
 		
 //		테이블 생성.
-		table = new JTable(rows, new String[] {"진행", "시간 (ms)", "메모리 (byte)", "정답"});
+		table = new JTable(rows, new String[] {"진행", "시간 (ms)", "실제 시간 (ms)", "메모리 (MB)", "정답"});
 		
 		scrollPane.setViewportView(table);
 		

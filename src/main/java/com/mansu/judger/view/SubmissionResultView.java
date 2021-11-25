@@ -51,22 +51,22 @@ public class SubmissionResultView extends JFrame {
 	}
 	
 	public String[][] generateTableRows() {
-		
-		String[][] rows = new String[submissionResultsPerTestcase.size()][4];
+		String[][] rows = new String[submissionResultsPerTestcase.size()][5];
 		for (int i = 0; i < rows.length; ++i) {
-			rows[i] = new String[4];
+			rows[i] = new String[5];
 //			POINT: 저장은 객체로
 			int resultCode = submissionResultsPerTestcase.get(i).getResult();
 			String resultString = ExecuteResultRepo.getResultStringById(resultCode);
 			rows[i][0] = resultString;
-			rows[i][1] = Integer.toString(submissionResultsPerTestcase.get(i).getCpuTime()) + " ms";
-			rows[i][2] = Double.toString((double) (submissionResultsPerTestcase.get(i).getMemory() / 1048576)) + " MB";
-			rows[i][3] = submissionResultsPerTestcase.get(i).isCorrect() ? "정답입니다!" : "틀렸습니다";
+			rows[i][1] = submissionResultsPerTestcase.get(i).getCpuTime() + " ms";
+			rows[i][2] = submissionResultsPerTestcase.get(i).getRealTime() + " ms";
+			rows[i][3] = (double) (submissionResultsPerTestcase.get(i).getMemory() / 1048576) + " MB";
+			rows[i][4] = submissionResultsPerTestcase.get(i).isCorrect() ? "정답입니다!" : "틀렸습니다";
 		}
 		return rows;
 	}
 
 	public String[] generateTableHeader() {
-		return new String[] { "채점 결과", "사용한 시간", "사용한 메모리", "정답 여부" };
+		return new String[] { "채점 결과", "사용한 시간", "실제 사용 시간", "사용한 메모리", "정답 여부" };
 	}
 }

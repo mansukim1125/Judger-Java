@@ -85,14 +85,14 @@ public class ProblemDetailView extends JFrame {
 		InputOutputExampleTable = new JTable(rows, new String[] { "입력", "출력" });
 		InputOutputExampleTable.setEnabled(true);
 
-		InputOutputExampleTable.setBounds(191, 315, 177, 32);
+		InputOutputExampleTable.setBounds(352, 315, 177, 32);
 		
 		InputOutputExampleTable.addMouseListener(new ExampleTestCaseClickListener(firstTestCase));
 		
 		contentPane.add(InputOutputExampleTable);
 		
 		JLabel InputOutputExampleLabel = new JLabel("입출력 예시");
-		InputOutputExampleLabel.setBounds(191, 290, 134, 15);
+		InputOutputExampleLabel.setBounds(352, 290, 134, 15);
 		contentPane.add(InputOutputExampleLabel);
 		
 		JScrollPane codeEditorScrollPane = new JScrollPane();
@@ -104,7 +104,7 @@ public class ProblemDetailView extends JFrame {
 		codeEditorScrollPane.setViewportView(codeEditor);
 		
 		JComboBox<LanguageDTO> languageSelectComboBox = new JComboBox<>();
-		languageSelectComboBox.setModel(new DefaultComboBoxModel<LanguageDTO>(new LanguageDTO[] {new CLanguageDTO(),new CPPLanguageDTO() , new JavaLanguageDTO(), new Python3LanguageDTO()}));
+		languageSelectComboBox.setModel(new DefaultComboBoxModel<>(new LanguageDTO[] {new CLanguageDTO(),new CPPLanguageDTO() , new JavaLanguageDTO(), new Python3LanguageDTO()}));
 		
 		languageSelectComboBox.setRenderer(new LanguageSelectComboBoxItemRenderer());
 		
@@ -133,28 +133,22 @@ public class ProblemDetailView extends JFrame {
 		resourceLimitTable = new JTable();
 		resourceLimitTable.setEnabled(false);
 		resourceLimitTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"시간 제한", "메모리 제한"},
-				{problem.getMaxCpuTime() + " ms", (double) (problem.getMaxMemory() / 1048576) + " MB"},
+			new String[][] {
+				{"시간 제한", "실제 시간 제한", "메모리 제한"},
+				{ problem.getMaxCpuTime() + " ms", problem.getMaxMemory() / 1048576 + " MB", problem.getMaxRealTime() + " ms"},
 			},
 			new String[] {
-				"timeLimit", "memoryLimit"
+				"timeLimit", "realTimeLimit", "memoryLimit"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Integer.class, Long.class
+				Integer.class, Long.class, Integer.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
-		resourceLimitTable.setBounds(12, 315, 140, 32);
+		resourceLimitTable.setBounds(12, 315, 298, 32);
 		contentPane.add(resourceLimitTable);
 		
 		pack();

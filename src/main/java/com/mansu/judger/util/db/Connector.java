@@ -12,9 +12,9 @@ public class Connector {
     private static BasicDataSource getDataSource() {
         if (dataSource == null) {
             BasicDataSource ds = new BasicDataSource();
-            ds.setUrl("jdbc:mariadb://pivpn.kro.kr:13723/Judge");
-            ds.setUsername("mansu");
-            ds.setPassword("05300530");
+            ds.setUrl("jdbc:mariadb://blind/Judge");
+            ds.setUsername("blind");
+            ds.setPassword("blind");
 
             dataSource = ds;
         }

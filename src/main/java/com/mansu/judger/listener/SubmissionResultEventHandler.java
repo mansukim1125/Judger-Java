@@ -21,8 +21,9 @@ public class SubmissionResultEventHandler {
 		String resultString = ExecuteResultRepo.getResultStringById(resultField);
 		
 		resultTableModel.setValueAt(resultString, currentTestCaseIndex, 0);
-		resultTableModel.setValueAt(Integer.toString(result.getCpuTime()) + " ms", currentTestCaseIndex, 1);
-		resultTableModel.setValueAt(Double.toString((double) (result.getMemory() / 1048576)) + " MB", currentTestCaseIndex, 2);
-		resultTableModel.setValueAt(result.isCorrect() ? "정답입니다!" : "틀렸습니다", currentTestCaseIndex, 3);
-	};
+		resultTableModel.setValueAt(result.getCpuTime() + " ms", currentTestCaseIndex, 1);
+		resultTableModel.setValueAt(result.getRealTime() + " ms", currentTestCaseIndex, 2);
+		resultTableModel.setValueAt((double) (result.getMemory() / 1048576) + " MB", currentTestCaseIndex, 3);
+		resultTableModel.setValueAt(result.isCorrect() ? "정답입니다!" : "틀렸습니다", currentTestCaseIndex, 4);
+	}
 }
