@@ -16,7 +16,6 @@ import com.mansu.repo.GsonRepo;
 import com.mansu.repo.TypeRepo;
 
 public class JudgmentLog {
-//	TODO: TypeRepo에 static으로 저장하기.
 	Type t = TypeRepo.getVectorOfCompletedSubmissionDTO();
 	
 	private Vector<CompletedSubmissionDTO> judgmentLogs;

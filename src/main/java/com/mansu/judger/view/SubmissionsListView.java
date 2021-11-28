@@ -50,7 +50,7 @@ public class SubmissionsListView extends JFrame {
 		submissionsTable = new JTable(rows, header);
 		submissionsTable.addMouseListener(new SubmissionsListTableCellClickedListener());
 		
-		for (int j = 0; j < 3; ++j) {
+		for (int j = 0; j < header.length; ++j) {
 //			POINT: 각 cell마다 Render방식 customize.
 //			refer to: http://www.java2s.com/Tutorial/Java/0240__Swing/CreatingaCustomCellRendererinaJTableComponent.htm
 			TableColumn col = submissionsTable.getColumnModel().getColumn(j);
@@ -62,19 +62,20 @@ public class SubmissionsListView extends JFrame {
 
 	public Object[][] generateTableRows() {
 		Vector<CompletedSubmissionDTO> results = getSubmissionResults();
-		Object[][] rows = new Object[results.size()][3];
+		Object[][] rows = new Object[results.size()][4];
 		for (int i = 0; i < rows.length; ++i) {
-			rows[i] = new Object[3];
+			rows[i] = new Object[4];
 //			POINT: 저장은 객체로
 			rows[i][0] = results.get(i).getProblem();
 			rows[i][1] = results.get(i).getResults();
 			rows[i][2] = results.get(i).getCode();
+			rows[i][3] = results.get(i).getLanguage();
 		}
 		return rows;
 	}
 
 	public String[] generateTableHeader() {
-		return new String[] { "문제", "제출 상세", "코드" };
+		return new String[] { "문제", "제출 상세", "코드", "언어" };
 	}
 	
 	public Vector<CompletedSubmissionDTO> getSubmissionResults() {

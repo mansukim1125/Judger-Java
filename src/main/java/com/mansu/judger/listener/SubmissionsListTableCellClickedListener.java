@@ -41,6 +41,8 @@ public class SubmissionsListTableCellClickedListener extends MouseAdapter {
 				SubmissionCodeView codeView = new SubmissionCodeView(code);
 				codeView.setVisible(true);
 				break;
+			default:
+				break;
 		}
 	}
 }

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+import com.mansu.judger.model.dto.CompletedSubmissionLanguageDTO;
 import com.mansu.judger.model.dto.CompletedSubmissionProblemDTO;
 
 public class SubmissionsListTableCellRenderer extends JLabel implements TableCellRenderer  {
@@ -25,6 +26,12 @@ public class SubmissionsListTableCellRenderer extends JLabel implements TableCel
 				break;
 			case 2:
 				text = "코드 보기";
+				break;
+			case 3:
+				CompletedSubmissionLanguageDTO language = (CompletedSubmissionLanguageDTO) value;
+				text = language.getName();
+				break;
+			default:
 				break;
 		}
 		setText(text);

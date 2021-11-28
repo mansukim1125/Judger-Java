@@ -9,7 +9,7 @@ public class DockerClientRepo {
 
     public static DockerClient getInstance() {
     	if (client == null) {
-    		client = DockerClientBuilder.getInstance(new DefaultDockerClientConfig.Builder().withDockerHost("tcp://blind/").build()).build();
+    		client = DockerClientBuilder.getInstance(new DefaultDockerClientConfig.Builder().withDockerHost("tcp://localhost:2375/").build()).build();
     	}
         return client;
     }
